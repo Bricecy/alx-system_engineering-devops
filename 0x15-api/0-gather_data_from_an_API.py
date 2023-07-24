@@ -1,11 +1,12 @@
 #!/usr/bin/python3
+
 import requests
 
 def get_employee_todo_progress(employee_id):
-    base_url = "https://jsonplaceholder.typicode.com/api"
+    base_url = "https://jsonplaceholder.typicode.com"  # Replace this with the actual API URL
 
     # Retrieve employee information
-    employee_url = f"{base_url}/employees/{employee_id}"
+    employee_url = f"{base_url}/users/{employee_id}"
     employee_response = requests.get(employee_url)
     if employee_response.status_code != 200:
         print("Error: Employee not found.")
@@ -28,8 +29,6 @@ def get_employee_todo_progress(employee_id):
 
     # Display the progress
     print(f"Employee {employee_name} is done with tasks ({num_done_tasks}/{total_tasks}):")
-
-    # Display completed tasks titles
     for task in done_tasks:
         print(f"\t{task['title']}")
 
